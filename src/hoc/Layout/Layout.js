@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const layout = (props) => {
   return (
@@ -7,10 +6,6 @@ const layout = (props) => {
       {props.children}
     </div>
   )
-};
-
-layout.propTypes = {
-
 };
 
 export default layout;

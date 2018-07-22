@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import BookShelf from '../BookShelf/BookShelf';
 
@@ -23,6 +22,8 @@ const BookLists = (props) => {
         case 'read':
           ReadList = bookList.filter(book => book.shelf === shelf);
           break
+        default: 
+          console.log('error');
       }   
     });
   }
@@ -30,9 +31,9 @@ const BookLists = (props) => {
   return (
     <div>
       <div className="list-books-content">
-        <BookShelf  bookList={currentlyReadingList} title={'Currently Reading'} />
-        <BookShelf bookList={WantToReadList} title={'Want to Read'} />
-        <BookShelf bookList={ReadList} title={'Read'} />      
+        <BookShelf bookUpdate={props.bookUpdate} bookList={currentlyReadingList} title={'Currently Reading'} />
+        <BookShelf bookUpdate={props.bookUpdate} bookList={WantToReadList} title={'Want to Read'} />
+        <BookShelf bookUpdate={props.bookUpdate} bookList={ReadList} title={'Read'} />      
       </div>
         <div className="open-search">
         <Link
@@ -44,10 +45,6 @@ const BookLists = (props) => {
       </div>                
     </div>    
   )
-};
-
-BookLists.propTypes = {
-
 };
 
 export default BookLists;

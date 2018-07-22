@@ -1,21 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Book = (props) => {
+const Book = (props) => {  
   const {
+    data,
+    bookUpdate  
+   } = props;
+
+   
+   const {   
     authors,
     imageLinks,
-    title,
-    subtitle    
-   } = props;
-   console.log('livro =', props);
-  return (
-    // <div>livro</div>
+    title } = data; 
+    const currentShelf = data.shelf ?  data.shelf : 'none';
+
+  return (    
     <div className="book">
       <div className="book-top">
+        { imageLinks ?        
         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${imageLinks.thumbnail}") `}}></div>
+        :
+        <div>Sem Thumbail!</div>
+        }        
           <div className="book-shelf-changer">
-            <select>
+            <select 
+              onChange={(event) => {
+                console.log('mudando');
+                bookUpdate(data,event.target.value, currentShelf)}                               
+              }
+              value={currentShelf}
+            >
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
@@ -25,13 +38,9 @@ const Book = (props) => {
           </div>
         </div>
       <div className="book-title">{title}</div>
-    <div className="book-authors">{authors[0]}</div>
+    <div className="book-authors">{authors}</div>
   </div>  
   );
-};
-
-Book.propTypes = {
-
 };
 
 export default Book;

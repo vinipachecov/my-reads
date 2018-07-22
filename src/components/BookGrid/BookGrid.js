@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Book from '../Book/Book';
 
 
@@ -8,15 +7,12 @@ const BookGrid = (props) => {
   return (
     <ol className="books-grid">      
         { bookList !== undefined ? 
-          bookList.map((bookData) => {
-            console.log(bookData)
+          bookList.map((bookData) => {            
             return (
-              <li >
-              <Book               
-                authors={bookData.authors}
-                title={bookData.title}
-                subtitle={bookData.subtitle}
-                imageLinks={bookData.imageLinks}
+              <li key={bookData.id}>
+              <Book
+                bookUpdate={props.bookUpdate}               
+                data={bookData}                
               />
             </li>)
           }) 
@@ -25,10 +21,6 @@ const BookGrid = (props) => {
         }              
     </ol>
   )
-};
-
-BookGrid.propTypes = {
-
 };
 
 export default BookGrid;
