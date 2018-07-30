@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import BookShelf from '../BookShelf/BookShelf';
+import PropTypes from 'prop-types';
+import Footer from '../Footer/Footer';
 
 
 const shelfs = ['currentlyReading', 'wantToRead', 'read'];
 
-const BookLists = (props) => {  
+const UserBooks = (props) => {  
   const { bookList } = props;    
   let currentlyReadingList, WantToReadList, ReadList;
 
@@ -21,9 +23,7 @@ const BookLists = (props) => {
           break
         case 'read':
           ReadList = bookList.filter(book => book.shelf === shelf);
-          break
-        default: 
-          console.log('error');
+          break        
       }   
     });
   }
@@ -37,14 +37,19 @@ const BookLists = (props) => {
       </div>
         <div className="open-search">
         <Link
-          to='/search'                       
-          onClick={() => this.setState({ showSearchPage: true })}
+          to='/search'                                 
         >            
         Add a Book
         </Link>
-      </div>                
+      </div>   
+      <Footer />             
     </div>    
   )
 };
 
-export default BookLists;
+  UserBooks.propTypes = {
+    bookList: PropTypes.array.isRequired,
+    bookUpdate: PropTypes.func.isRequired
+}
+
+export default UserBooks;

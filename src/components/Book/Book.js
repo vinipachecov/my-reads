@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Book = (props) => {  
   const {
@@ -23,8 +24,7 @@ const Book = (props) => {
         }        
           <div className="book-shelf-changer">
             <select 
-              onChange={(event) => {
-                console.log('mudando');
+              onChange={(event) => {                
                 bookUpdate(data,event.target.value, currentShelf)}                               
               }
               value={currentShelf}
@@ -42,5 +42,10 @@ const Book = (props) => {
   </div>  
   );
 };
+
+Book.propTypes = {
+  data: PropTypes.object.isRequired,
+  bookUpdate: PropTypes.func.isRequired
+}
 
 export default Book;

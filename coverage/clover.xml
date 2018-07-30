@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1532818824199" clover="3.2.0">
+  <project timestamp="1532818824199" name="All files">
+    <metrics statements="130" coveredstatements="88" conditionals="49" coveredconditionals="25" methods="49" coveredmethods="33" elements="228" coveredelements="146" complexity="0" loc="130" ncloc="130" packages="11" files="14" classes="14">
+      <package name="src">
+        <metrics statements="63" coveredstatements="22" conditionals="16" coveredconditionals="1" methods="24" coveredmethods="9"/>
+        <file name="App.js" path="/home/vinicius/repos/my-reads/src/App.js">
+          <metrics statements="34" coveredstatements="1" conditionals="10" coveredconditionals="0" methods="12" coveredmethods="0"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="50" count="0" type="stmt"/>
+          <line num="51" count="0" type="stmt"/>
+          <line num="52" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="60" count="0" type="stmt"/>
+          <line num="62" count="0" type="stmt"/>
+          <line num="71" count="0" type="stmt"/>
+          <line num="75" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="78" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="81" count="0" type="stmt"/>
+          <line num="82" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="83" count="0" type="stmt"/>
+          <line num="85" count="0" type="stmt"/>
+          <line num="90" count="0" type="stmt"/>
+          <line num="91" count="0" type="stmt"/>
+          <line num="94" count="0" type="stmt"/>
+          <line num="97" count="0" type="stmt"/>
+          <line num="98" count="0" type="stmt"/>
+          <line num="102" count="0" type="stmt"/>
+          <line num="108" count="0" type="stmt"/>
+          <line num="112" count="0" type="stmt"/>
+          <line num="117" count="0" type="stmt"/>
+          <line num="126" count="0" type="stmt"/>
+        </file>
+        <file name="BooksAPI.js" path="/home/vinicius/repos/my-reads/src/BooksAPI.js">
+          <metrics statements="20" coveredstatements="18" conditionals="2" coveredconditionals="1" methods="11" coveredmethods="9"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="7" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="8" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="20" count="2" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+          <line num="22" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="35" count="2" type="stmt"/>
+          <line num="36" count="1" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+        </file>
+        <file name="index.js" path="/home/vinicius/repos/my-reads/src/index.js">
+          <metrics statements="6" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="7" count="0" type="stmt"/>
+        </file>
+        <file name="setupTests.js" path="/home/vinicius/repos/my-reads/src/setupTests.js">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="4" count="11" type="stmt"/>
+          <line num="6" count="11" type="stmt"/>
+          <line num="11" count="11" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.Book">
+        <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <file name="Book.js" path="/home/vinicius/repos/my-reads/src/components/Book/Book.js">
+          <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
+          <line num="4" count="6" type="stmt"/>
+          <line num="8" count="2" type="stmt"/>
+          <line num="14" count="2" type="stmt"/>
+          <line num="15" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="46" count="6" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.BookGrid">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <file name="BookGrid.js" path="/home/vinicius/repos/my-reads/src/components/BookGrid/BookGrid.js">
+          <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+          <line num="5" count="4" type="stmt"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="11" count="10" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.BookShelf">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <file name="BookShelf.js" path="/home/vinicius/repos/my-reads/src/components/BookShelf/BookShelf.js">
+          <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+          <line num="5" count="3" type="stmt"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="20" count="3" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.Footer">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="Footer.js" path="/home/vinicius/repos/my-reads/src/components/Footer/Footer.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.Navigation.Header">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <file name="Header.js" path="/home/vinicius/repos/my-reads/src/components/Navigation/Header/Header.js">
+          <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="21" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.Navigation.SearchPage">
+        <metrics statements="26" coveredstatements="25" conditionals="14" coveredconditionals="12" methods="10" coveredmethods="9"/>
+        <file name="SearchPage.js" path="/home/vinicius/repos/my-reads/src/components/Navigation/SearchPage/SearchPage.js">
+          <metrics statements="26" coveredstatements="25" conditionals="14" coveredconditionals="12" methods="10" coveredmethods="9"/>
+          <line num="25" count="9" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="32" count="3" type="stmt"/>
+          <line num="33" count="3" type="cond" truecount="2" falsecount="2"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="36" count="3" type="stmt"/>
+          <line num="38" count="1" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="43" count="5" type="stmt"/>
+          <line num="44" count="5" type="stmt"/>
+          <line num="46" count="5" type="stmt"/>
+          <line num="47" count="5" type="cond" truecount="4" falsecount="0"/>
+          <line num="48" count="3" type="stmt"/>
+          <line num="50" count="81" type="stmt"/>
+          <line num="51" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="52" count="2" type="stmt"/>
+          <line num="57" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="58" count="1" type="stmt"/>
+          <line num="61" count="2" type="stmt"/>
+          <line num="69" count="21" type="stmt"/>
+          <line num="70" count="21" type="stmt"/>
+          <line num="71" count="21" type="stmt"/>
+          <line num="76" count="1" type="stmt"/>
+          <line num="85" count="5" type="stmt"/>
+          <line num="93" count="3" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.UserBooks">
+        <metrics statements="14" coveredstatements="14" conditionals="7" coveredconditionals="6" methods="5" coveredmethods="5"/>
+        <file name="UserBooks.js" path="/home/vinicius/repos/my-reads/src/components/UserBooks/UserBooks.js">
+          <metrics statements="14" coveredstatements="14" conditionals="7" coveredconditionals="6" methods="5" coveredmethods="5"/>
+          <line num="8" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="11" count="3" type="stmt"/>
+          <line num="14" count="3" type="cond" truecount="3" falsecount="1"/>
+          <line num="16" count="3" type="stmt"/>
+          <line num="17" count="9" type="cond" truecount="3" falsecount="0"/>
+          <line num="19" count="10" type="stmt"/>
+          <line num="20" count="3" type="stmt"/>
+          <line num="22" count="10" type="stmt"/>
+          <line num="23" count="3" type="stmt"/>
+          <line num="25" count="10" type="stmt"/>
+          <line num="26" count="3" type="stmt"/>
+          <line num="31" count="3" type="stmt"/>
+          <line num="50" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.hoc.Aux">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="Aux.js" path="/home/vinicius/repos/my-reads/src/hoc/Aux/Aux.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="4" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.hoc.Container">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <file name="Container.js" path="/home/vinicius/repos/my-reads/src/hoc/Container/Container.js">
+          <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+          <line num="3" count="2" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.hoc.Layout">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="Layout.js" path="/home/vinicius/repos/my-reads/src/hoc/Layout/Layout.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="3" count="2" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

@@ -6,9 +6,9 @@ import Layout from './hoc/Layout/Layout';
 import Header from './components/Navigation/Header/Header';
 import SearchPage from './components/Navigation/SearchPage/SearchPage';
 import Container from './hoc/Container/Container';
-import BookLists from './components/BookLists/BookLists';
+import UserBooks from './components/UserBooks/UserBooks';
+import sortBy from 'sort-by';
 import * as BooksAPI from './BooksAPI';
-import Book from './components/Book/Book';
 
 const bookAreas = ['Android', 'Art', 'Artificial Intelligence', 'Astronomy',
  'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business',
@@ -23,23 +23,39 @@ const bookAreas = ['Android', 'Art', 'Artificial Intelligence', 'Astronomy',
  'Web Development', 'iOS'
 ];
 
-class BooksApp extends React.Component {
+class BooksApp extends React.Component {  
+
   state = {       
-    userBooks: []    
+    userBooks: [],
+    showSearchPage: false    
   }
 
-  componentDidMount() {
+  componentDidMount() {      
     BooksAPI.getAll().then(books => {
+      books.sort(sortBy('title'));
+      console.log(books)
       this.setState({ userBooks: books });
-    })
+    })    
   }
 
-  queryBooks = async (query) => {
-    console.log('tema a ser pesquisado =  ', query );
+  queryBooks = async (query) => {    
     try {
+      // Chamada da API
       const res = await BooksAPI.search(query);
       if (res.error === undefined) {
-        return res;      
+        //
+        const { userBooks } = this.state; 
+
+        // Verificar se um livro já está em uma estante
+        const bookArray = res.map(book => {
+          const alreadyInShelf = userBooks.find(userBook => book.title === userBook.title);
+          if (alreadyInShelf) {
+            // Adicionar estante do livro 
+            return { ...book, shelf: alreadyInShelf.shelf };
+          }         
+          return book; 
+        });        
+        return bookArray;      
       }      
       return [];
     } catch (error) {
@@ -48,22 +64,10 @@ class BooksApp extends React.Component {
   }
   
 
-  updateShelfs = async (array) => {
-    // return new Promise(async resolve => {
-    //   const newBookList = [];                  
-    //     array.forEach( async bookId => {          
-    //       const book = await BooksAPI.get(bookId); 
-    //       console.log(book);                                 
-    //       const { allBooks } = this.state;
-    //       allBooks.push(Book);          
-    //     });      
-    //     resolve();
-      // });            
-  }  
-
+  
   onBookChangeShelf = async (book, shelf, currentShelf) => {        
     // Pegar array original
-    console.log(book, shelf);
+    
     const { userBooks } = this.state;
     let newBookList;
 
@@ -99,6 +103,7 @@ class BooksApp extends React.Component {
   }
 
 
+  
   onHeaderChange = (status) =>{
     this.setState({ showSearchPage: status });
   }    
@@ -115,15 +120,15 @@ class BooksApp extends React.Component {
               bookUpdate={this.onBookChangeShelf}   
               userBooks={this.state.userBooks}
               bookAreas={bookAreas}
-            />
+            />            
             )} />                           
-         <Route exact path='/' render={ () => (  
-           <BookLists 
+         <Route exact path='/' render={ () => (             
+           <UserBooks 
             bookList={this.state.userBooks}
             bookUpdate={this.onBookChangeShelf}
-           />
-          )} />             
-          </Header>     
+           />                      
+          )} />                       
+          </Header>               
         </Container>       
       </Layout>
     )

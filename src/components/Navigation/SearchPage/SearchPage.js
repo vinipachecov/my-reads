@@ -3,8 +3,18 @@ import { Link } from 'react-router-dom';
 import Book from '../../Book/Book';
 import escapeRegExp from 'escape-string-regexp';
 import sortBy from 'sort-by';
+import PropTypes from 'prop-types';
+
 
 export default class SearchPage extends Component {
+
+  static propTypes = {
+    onSearch: PropTypes.func.isRequired,
+    queryBooks: PropTypes.func.isRequired,
+    bookUpdate: PropTypes.func.isRequired,
+    userBooks: PropTypes.array.isRequired,
+    bookAreas: PropTypes.array.isRequired
+  }
 
   state = {
     searchText: '',
@@ -16,7 +26,7 @@ export default class SearchPage extends Component {
   }
 
   compareShelfs = (results) => {    
-    const { userBooks } = this.props;
+    const { userBooks } = this.props;    
 
     const newList = results.map(book => {
       const res = userBooks.find(item => item.title === book.title);
@@ -25,19 +35,25 @@ export default class SearchPage extends Component {
       }
       else return { ...book, shelf: 'none' };       
     });
-    console.log(newList);
+    newList.sort(sortBy('title'));
     this.setState({ searchBooks: newList });
   }
 
-  onSearchTextChange = async (event) => {    
-    const { searchText } = this.state;
+  onSearchTextChange = async (event) => {      
     const { bookAreas } = this.props;
-    const { value } = event.target               
+    const { value } = event.target;
+    let searchBooks;               
     this.setState({ searchText: value});                 
-    if (value !== ' ' && value !== '') {              
+    if (value !== ' ' && value !== '') {                    
       const match = new RegExp(escapeRegExp(value), 'i');
-      const query = bookAreas.find(theme => match.test(theme));            
-      const searchBooks = await this.props.queryBooks(query);                   
+      // Busca areas de livros disponíveis para buscar na API
+      const query = bookAreas.find(theme => match.test(theme));     
+      if (query !== undefined) {
+        searchBooks = await this.props.queryBooks(query);                   
+      }      
+      
+      // Tendo algum resultado é feita verificação das estantes 
+      // de cada livro
       if (searchBooks !== undefined) {             
         this.compareShelfs(searchBooks);        
       }
@@ -52,16 +68,12 @@ export default class SearchPage extends Component {
   render() {
     const { bookUpdate } = this.props;
     const { searchText, searchBooks } = this.state;    
-
-    // let showingBooks;
-    
-    
-    console.log(this.state);
     return (             
       <div>
         <div className="search-books-bar">
         <Link
           className="close-search"
+          onClick={() => this.props.onSearch(false) }
           to='/'
         >
         </Link>        
@@ -88,7 +100,7 @@ export default class SearchPage extends Component {
                     )
                   })
                   :
-                  <div>Digite algo para ser procurado!</div>
+                  <div></div>
                 }              
           </ol>
         </div>    
