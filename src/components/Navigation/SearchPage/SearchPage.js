@@ -28,12 +28,12 @@ export default class SearchPage extends Component {
   compareShelfs = (results) => {    
     const { userBooks } = this.props;    
 
-    const newList = results.map(book => {
-      const res = userBooks.find(item => item.title === book.title);
+    const newList = results.map(bookFromSearch => {
+      const res = userBooks.find(userBook => userBook.id === bookFromSearch.id);
       if (res !== undefined && res !== null) {
-        return { ...book, shelf: book.shelf };
+        return { ...bookFromSearch, shelf: bookFromSearch.shelf };
       }
-      else return { ...book, shelf: 'none' };       
+      else return { ...bookFromSearch, shelf: 'none' };       
     });
     newList.sort(sortBy('title'));
     this.setState({ searchBooks: newList });

@@ -8,25 +8,19 @@ import Footer from '../Footer/Footer';
 const shelfs = ['currentlyReading', 'wantToRead', 'read'];
 
 const UserBooks = (props) => {  
-  const { bookList } = props;    
-  let currentlyReadingList, WantToReadList, ReadList;
+  const { bookList } = props;      
+  let currentlyReadingList = [];
+  let  WantToReadList = [];
+  let ReadList = [];
 
   if (bookList > 0 || bookList !== undefined) {
-    // filter bookList based on section
-    shelfs.forEach(shelf => {    
-      switch(shelf) {
-        case 'currentlyReading':
-          currentlyReadingList = bookList.filter(book => book.shelf === shelf);        
-          break
-        case 'wantToRead':
-          WantToReadList = bookList.filter(book => book.shelf === shelf);
-          break
-        case 'read':
-          ReadList = bookList.filter(book => book.shelf === shelf);
-          break        
-      }   
-    });
-  }
+    // filter bookList based on section      
+    [
+      currentlyReadingList,
+      WantToReadList,
+      ReadList
+     ] = shelfs.map(shelf => bookList.filter(book => book.shelf === shelf))           
+  } 
   
   return (
     <div>

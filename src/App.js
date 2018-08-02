@@ -30,12 +30,14 @@ class BooksApp extends React.Component {
     showSearchPage: false    
   }
 
-  componentDidMount() {      
-    BooksAPI.getAll().then(books => {
-      books.sort(sortBy('title'));
-      console.log(books)
-      this.setState({ userBooks: books });
-    })    
+  async componentDidMount() {   
+    try {
+      const books = await BooksAPI.getAll();
+      books.sort(sortBy('title'));      
+      this.setState({ userBooks: books });      
+    } catch (error) {
+      console.log('Erro ao pegar lista de livros!: ', error);      
+    }   
   }
 
   queryBooks = async (query) => {    
@@ -82,20 +84,21 @@ class BooksApp extends React.Component {
           if (item.title === book.title) {
             return { ...book, shelf: shelf };
           } else {
-            return { ...item};      
+            return item;      
           }        
         });
       } else {                
         // deixar de retornar apenas o livro em questão
         newBookList = userBooks.filter(item => {
-          return item.title !== book.title
+          return item.id !== book.id
         });      
       }    
       this.setState({ userBooks: newBookList });
     } else {
       // adicionar o livro na lista de livros do usuario 
-      userBooks.push({ ...book, shelf: shelf });
-      this.setState({ userBooks });
+      newBookList = [...userBooks, { ...book, shelf: shelf }];
+      
+      this.setState({ userBooks: newBookList });
     }
    
     // Chamada na API e atualizando o state do react
