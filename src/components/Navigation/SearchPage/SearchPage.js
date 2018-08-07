@@ -26,16 +26,19 @@ export default class SearchPage extends Component {
   }
 
   compareShelfs = (results) => {    
+    console.log('entrou no compare shelfs');
     const { userBooks } = this.props;    
-
+    console.log('userBooks no compareshelfs', userBooks);
+    
     const newList = results.map(bookFromSearch => {
       const res = userBooks.find(userBook => userBook.id === bookFromSearch.id);
       if (res !== undefined && res !== null) {
-        return { ...bookFromSearch, shelf: bookFromSearch.shelf };
+        return { ...bookFromSearch, shelf: res.shelf };
       }
       else return { ...bookFromSearch, shelf: 'none' };       
     });
     newList.sort(sortBy('title'));
+    console.log('nova lista de pesquisa ', newList);
     this.setState({ searchBooks: newList });
   }
 
@@ -62,8 +65,13 @@ export default class SearchPage extends Component {
     }    
   }
 
-
-
+  updateSearchResults = async (data, newShelf, currentShelf) => {
+    const { searchBooks } = this.state;
+    console.log('nova estante', newShelf);
+    console.log('antiga estante ', currentShelf);
+    await this.props.bookUpdate(data, newShelf, currentShelf);
+    this.compareShelfs(searchBooks);    
+  }
 
   render() {
     const { bookUpdate } = this.props;
@@ -94,7 +102,7 @@ export default class SearchPage extends Component {
                       <li key={item.id}>
                         <Book
                           data={item}
-                          bookUpdate={bookUpdate}
+                          bookUpdate={this.updateSearchResults}                          
                         />
                       </li>
                     )

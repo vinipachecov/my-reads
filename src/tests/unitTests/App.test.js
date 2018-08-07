@@ -2,7 +2,9 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import ReactDOM from 'react-dom'
 import App from '../../App';
-import { BrowserRouter } from 'react-router-dom'
+import { MemoryRouter, BrowserRouter } from 'react-router-dom'
+import UserBooks from '../../components/UserBooks/UserBooks';
+import allbooks from '../testResource/allbooks'
 
 function mockFetch(data) {
   return jest.fn().mockImplementation(() =>
@@ -12,24 +14,33 @@ function mockFetch(data) {
       })
   )
 }
-const books = { books: [{ id: 'book_id', shelf: 'currentlyReading'}] }
-const book = { book: { id: 'book_id', shelf: 'currentlyReading'} }
+const books = { books: [allbooks] }
+const book = { book: allbooks[0] }
 
 describe('[Component] App', () => {
   it('render without crash', () => {          
-      expect((<BrowserRouter><App/></BrowserRouter>));          
+      expect((<MemoryRouter><App/></MemoryRouter>));        
+  });
+
+  it('Expect to be in homepage', () => {    
+    fetch = mockFetch(books);
+    const wrapper = mount(<MemoryRouter><App/></MemoryRouter>);             
+    const homepage = wrapper.find('UserBooks');
+    expect(homepage).toHaveLength(1);
+  });
+
+
+
+  it('Check routes', () => {    
+    fetch = mockFetch(books);
+    const wrapper = mount(<MemoryRouter><App/></MemoryRouter>);                       
+    expect(wrapper.find('Route')).toHaveLength(2);
   })
 
-  it('Go to search Page correctly by Click on "plus" button', () => {    
+  it('Check routes', () => {    
     fetch = mockFetch(books);
-    const wrapper = shallow(<BrowserRouter><App/></BrowserRouter>);             
-    console.log(wrapper.html());
-    
-    // button.simulate('click');    
-    // wrapper.update();
-    // setImmediate(() => {
-    //   console.log(wrapper.html());
-    // })    
+    const wrapper = shallow(<BrowserRouter><App/></BrowserRouter>);                       
+    console.log(wrapper.find('div'));
   })
 });
 

@@ -70,7 +70,7 @@ class BooksApp extends React.Component {
   onBookChangeShelf = async (book, shelf, currentShelf) => {        
     // Pegar array original
     
-    const { userBooks } = this.state;
+    const { userBooks, showSearchPage } = this.state;
     let newBookList;
 
     // Verificar se o livro está em alguma instante
@@ -81,26 +81,29 @@ class BooksApp extends React.Component {
         // modificar array atual adicionando o livro na estante correta
         // alterando o parametro shelf do item escolhido       
         newBookList = userBooks.map(item => {
-          if (item.title === book.title) {
+          if (item.id === book.id) {
             return { ...book, shelf: shelf };
           } else {
             return item;      
           }        
         });
+        console.log('nova lista = ', newBookList);
+        this.setState({ userBooks: newBookList });      
+        console.log(this.state);
       } else {                
         // deixar de retornar apenas o livro em questão
         newBookList = userBooks.filter(item => {
           return item.id !== book.id
         });      
-      }    
-      this.setState({ userBooks: newBookList });
+        this.setState({ userBooks: newBookList });      
+      }          
     } else {
       // adicionar o livro na lista de livros do usuario 
       newBookList = [...userBooks, { ...book, shelf: shelf }];
+      console.log('nova lista dentro do book', newBookList);
       
-      this.setState({ userBooks: newBookList });
-    }
-   
+      this.setState({ userBooks: newBookList });      
+    }      
     // Chamada na API e atualizando o state do react
     await BooksAPI.update(book, shelf);  
   }

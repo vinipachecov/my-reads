@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.86% </span>
+        <span class="strong">80.56% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>26/28</span>
+        <span class='fraction'>29/36</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">85.71% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>12/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">90% </span>
+        <span class="strong">81.82% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>9/10</span>
+        <span class='fraction'>9/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">96.15% </span>
+        <span class="strong">82.35% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>25/26</span>
+        <span class='fraction'>28/34</span>
       </div>
     </div>
     <p class="quiet">
@@ -156,7 +156,15 @@
 <a name='L108'></a><a href='#L108'>108</a>
 <a name='L109'></a><a href='#L109'>109</a>
 <a name='L110'></a><a href='#L110'>110</a>
-<a name='L111'></a><a href='#L111'>111</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,6 +193,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -193,6 +203,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -221,6 +232,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -294,16 +310,19 @@ export default class SearchPage extends Component {
   }
 &nbsp;
   compareShelfs = (results) =&gt; {    
+    console.log('entrou no compare shelfs');
     const { userBooks } = this.props;    
-&nbsp;
-    const newList = results.map(book =&gt; {
-      const res = userBooks.find(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >item.title === book.title)</span>;
+    console.log('userBooks no compareshelfs', userBooks);
+    
+    const newList = results.map(bookFromSearch =&gt; {
+      const res = userBooks.find(<span class="fstat-no" title="function not covered" >us</span>erBook =&gt; <span class="cstat-no" title="statement not covered" >userBook.id === bookFromSearch.id)</span>;
       <span class="missing-if-branch" title="if path not taken" >I</span>if (res !== undefined &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >res !== null)</span> {
-<span class="cstat-no" title="statement not covered" >        return { ...book, shelf: book.shelf };</span>
+<span class="cstat-no" title="statement not covered" >        return { ...bookFromSearch, shelf: res.shelf };</span>
       }
-      else return { ...book, shelf: 'none' };       
+      else return { ...bookFromSearch, shelf: 'none' };       
     });
     newList.sort(sortBy('title'));
+    console.log('nova lista de pesquisa ', newList);
     this.setState({ searchBooks: newList });
   }
 &nbsp;
@@ -330,8 +349,13 @@ export default class SearchPage extends Component {
     }    
   }
 &nbsp;
-&nbsp;
-&nbsp;
+  updateSearchResults = <span class="fstat-no" title="function not covered" >as</span>ync (data, newShelf, currentShelf) =&gt; {
+    const { searchBooks } = <span class="cstat-no" title="statement not covered" >this.state;</span>
+<span class="cstat-no" title="statement not covered" >    console.log('nova estante', newShelf);</span>
+<span class="cstat-no" title="statement not covered" >    console.log('antiga estante ', currentShelf);</span>
+<span class="cstat-no" title="statement not covered" >    await this.props.bookUpdate(data, newShelf, currentShelf);</span>
+<span class="cstat-no" title="statement not covered" >    this.compareShelfs(searchBooks);    </span>
+  }
 &nbsp;
   render() {
     const { bookUpdate } = this.props;
@@ -362,7 +386,7 @@ export default class SearchPage extends Component {
                       &lt;li key={item.id}&gt;
                         &lt;Book
                           data={item}
-                          bookUpdate={bookUpdate}
+                          bookUpdate={this.updateSearchResults}                          
                         /&gt;
                       &lt;/li&gt;
                     )
@@ -382,7 +406,7 @@ export default class SearchPage extends Component {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jul 28 2018 20:00:24 GMT-0300 (-03)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Aug 06 2018 19:07:59 GMT-0300 (-03)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
